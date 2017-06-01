@@ -123,7 +123,7 @@ struct AlternativeRect {
 //: A computed property with a getter but no setter is know as **read-only computed property**.
 //: A read-only computed property always returns a value, and can be accessed througn dot syntax, but can not be set to a different vlaue.
 /*:
-    You must declare computed properties--inclueding read-only computed properties--as variable properties with the **var** keyword, because their value is not fixed
+    You must declare computed properties--inclueding read-only computed properties--as variable properties with the *var* keyword, because their value is not fixed
     The **let** keyword is only used for constant properties, to indicate that their values cannot be changed once they are set as part of instance instance initialization.
  */
 
@@ -144,8 +144,9 @@ print("the volume of fourByFiveByOne is \(fourByFiveByOne.volume)")
  * **didSet**
  */
 
-//: Property observers are called every time a property;s value is set, even the new value is the same as the property's current value.
-/*: Observe can be add to:
+//: Property observers are called every time a property's value is set, even the new value is the same as the property's current value.
+/*: 
+ Observe can be add to:
  * Any stored properties you define, except for lazy stored properties.
  * Any inherited properties (whether stored or computed) by overriding the property within the subclass
  */
