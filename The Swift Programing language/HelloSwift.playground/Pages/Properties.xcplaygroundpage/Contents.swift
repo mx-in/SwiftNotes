@@ -7,7 +7,6 @@
 //: Stored properties
 //: store constant an vairable values as part of instance; provide **only by classes and structures**
 
-
 //: Computed properties
 //: computed properties calculate a value; prvide by classes, structures, and enumerations.
 
@@ -19,13 +18,12 @@ struct FixedLengthRange {
 }
 
 var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 2)
-
 //: ## Store Properties of Constants Structure Instances
 
 let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
 //rangeOfFourItems.firstValue = 6
 //error: cannot assign to property: 'rangeOfFourItems' is a 'let' constant
-//: This behaviour is due to structures being **value types**. When an isntance of a value type is marked as a constant, so are all of its properties
+//: This behaviour is due to structures being **value types**. When an instance of a value type is marked as a constant, so are all of its properties
 
 //: The same is not true for classes, which are reference types. if you assign an instance of a reference typ to a constant, you can still change that isntance's variable properties.
 
@@ -45,7 +43,7 @@ test.len = 3
 //: A lazy stored property is a property whose initial value is not calculated until the first time it is used. You indicate a lazy soted property by writing the lazy modifier before its declaration.
 
 /*:
-    You must always declare a lazy property as a **variable** (with the **var** keyword), because its initial value might not be retrieved until after instance initilization completes, Constant properties must always have a value before initialalization completes, therefore cannot be declared as lazy
+    You must always declare a lazy property as a variable (with the var keyword), because its initial value might not be retrieved until after instance initilization completes, Constant properties must always have a value before initialalization completes, therefore cannot be declared as lazy.
  */
 
 class DataImporter {
@@ -62,10 +60,10 @@ manager.data.append("Some data")
 manager.data.append("Some more data")
 // importer not been created
 print(manager.importer.fileName)
-// the DataImporter instance for the importre property has now been created
+// the DataImporter instance for the importer property has now been created
 
 /*:
- If a property marked with the lazy modifier is accessed by multiple threads simultaneously and the property has not yet been initialized, there is no guarantee that the property will be initialized only once.
+ If a property marked with the lazy modifier is accessed by multiple threads simultaneously and the property has not yet been initialized, there is no guarantee that the property will be initialized only once. (!!!Not Thread Safety)
  */
 
 //: ## Stored Properties an instance Variables
@@ -150,7 +148,7 @@ print("the volume of fourByFiveByOne is \(fourByFiveByOne.volume)")
  * Any stored properties you define, except for lazy stored properties.
  * Any inherited properties (whether stored or computed) by overriding the property within the subclass
  */
-//: You don't need to define property observers for **nonoverridden computed properties**, because you can observer and respond to change their value in the computed property's setter.
+//: You don't need to define property observers for **non-overridden computed properties**, because you can observer and respond to change their value in the computed property's setter.
 
 //: In sum: Observer is use to oberver stored properties and super class's properties(whether store or computed) that overwrite in subclass, computed properties can be observer in their setter
 
