@@ -154,12 +154,12 @@ alsoIncrementByTen()
 
 
 //: ## Escaping Closures
-//: A closure is said to **escape** a function when the closure is passed as an argument to the function, but is called afterr the function returns. 
-//: When you declare a function that takes a closure as one of its parameters, you can write **@escaping** before the parameter's type to indicate that the closure is allowed to escape
+//: A closure is said to **escape** a function when the closure is passed as an argument to the function, but is called after the function returns.
+//: When you declare a function that takes a closure as one of its parameters, you can write **@escaping** before the parameter's type to indicate that the closure is allowed to escape.
 
 var completionHandlers: [() -> Void] = []
 
-func someFunctionWithEscapingClo(completion: @escaping () -> Void) {
+func someFunctionWithEscapingClosure(completion: @escaping () -> Void) {
     completionHandlers.append(completion)
 }
 //: Marking a closure with @escaping means you have to refer to self explictly within the closure
@@ -171,7 +171,7 @@ class SomeClass {
     var x = 10
     func doSomething() {
         
-        someFunctionWithEscapingClo { // @escaping means you have to refer to self explicity within the closure
+        someFunctionWithEscapingClosure { // @escaping means you have to refer to self explicity within the closure
             self.x = 100
         }
         
@@ -187,10 +187,9 @@ print(instance.x)
 
 completionHandlers.first?()
 print(instance.x)
-
 //: ## Autoclosures
-//: An **autoclosure** is a closure that automatically created to warp an expression that's being passed as an arguement to a function. It's doesn's take any arguments, and when it's called, it returns the value of the expression that's  warpped inside of it. 
-//: This syntactic convenience lets you omit braces around function's parameter by writing a normal expression instead of an explicit closure
+//: An **autoclosure** is a closure that automatically created to warp an expression that's being passed as an arguement to a function. It's doesn's take any arguments, and when it's called, it returns the value of the expression that's  warpped inside of it.
+//: *This syntactic convenience lets you omit braces around function's parameter* by writing a normal expression instead of an explicit closure.
 
 var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella", "Anna"]
 print(customersInLine.count)
@@ -211,7 +210,6 @@ func serve(customer customerProvider: () -> String) {
 
 serve(customer: { customersInLine.remove(at: 0) })
 serve {customersInLine.remove(at: 0)}
-
 //: ### @autoclosure
 
 func autoclosureServer(customer customerProvider: @autoclosure () -> String) {
@@ -237,11 +235,5 @@ collectCustomerProvider(customersInLine.remove(at: 0))
 for customerProvider in customerProviders {
     print("Now serving \(customerProvider())")
 }
-
-
-
-
-
-
 
 //: [Next](@next)
