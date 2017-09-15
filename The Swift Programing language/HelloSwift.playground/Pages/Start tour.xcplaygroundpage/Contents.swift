@@ -283,7 +283,7 @@ var imagePaths = ["star": "/glyphs/star.png",
 imagePaths["star"]?.append("hello")
 
 //: To safely access the properties and methods of a wrapped instance, use the postfix optional chaining operator (?).
-if let isPNG = imagePaths["star"]?.hasSuffix(".png") {
+if let _ = imagePaths["star"]?.hasSuffix(".png") {
     print("The star image is in PNG format")
 }
 
